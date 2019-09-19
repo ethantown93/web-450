@@ -1,3 +1,11 @@
+/*
+============================================
+; Author: Ethan Townsend
+; Date:   8/12/2019
+; Description: web-425
+;===========================================
+*/
+
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
