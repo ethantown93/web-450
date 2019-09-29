@@ -9,7 +9,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth.service';
 
@@ -22,9 +21,8 @@ import { AuthService } from '../../auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginUserData = {};
 
-  constructor(private auth: AuthService, private router: Router, private http: HttpClient, private cookieService: CookieService) { }
+  constructor(private auth: AuthService, private router: Router, private http: HttpClient) { }
 
   login(form: NgForm) {
     if(form.invalid) {
