@@ -36,12 +36,6 @@ const serverPort = 3000;
 
 /************************* Mongoose connection strings go below this line  ***************/
 
-mongoose.connect('mongodb+srv://admin:Kellogs123@cluster0-rfwnt.mongodb.net/employees?retryWrites=true&w=majority').then(() => {
-    console.log('successfully connected to MongoDB')
-}).catch(() => {
-    console.log('connection failed.');
-});
-
 /************************* API routes go below this line ********************/
 
 /********************* api routes located in ./routes/api ******************/

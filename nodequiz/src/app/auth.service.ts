@@ -10,6 +10,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { AuthData } from "./auth-data.model";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,9 +22,10 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
 
-  login(user: string) {
-    console.log(user);
-    this.http.post(this.loginUrl, user).subscribe( res => {
+  login(id: string) {
+    const authData: AuthData = { id: id };
+    console.log(id);
+    this.http.post(this.loginUrl, authData).subscribe( res => {
       console.log(res);
     })
   }
