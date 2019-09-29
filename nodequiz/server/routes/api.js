@@ -1,3 +1,12 @@
+/*
+============================================
+; Author: Ethan Townsend
+; Date:   8/12/2019
+; Description: web-425
+;===========================================
+*/ 
+
+
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');

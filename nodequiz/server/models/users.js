@@ -1,3 +1,12 @@
+
+/*
+============================================
+; Author: Ethan Townsend
+; Date:   8/12/2019
+; Description: web-425
+;===========================================
+*/ 
+
 const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
