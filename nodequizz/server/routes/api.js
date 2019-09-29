@@ -23,7 +23,7 @@ router.post('/users', (req, res, next) => {
   })
 
 router.get('/users/:id', (req, res, next) => {
-    User.findOne({'id': req.params.id}, (err, users) => {
+    User.find({'id': req.params.id}, (err, users) => {
         if(err) {
             console.log(err);
         } else 
