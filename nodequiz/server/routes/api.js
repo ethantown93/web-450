@@ -49,7 +49,7 @@ router.get('/users/:id', (req, res, next) => {
 
   router.post('/login', (req, res, next) => {
       let fetchedUser;
-    User.find({ id: req.body.id }).then(user => {
+    User.findOne({ id: req.body.id }).then(user => {
         console.log(user);
         if(!user) {
             return res.status(401).json({
@@ -57,10 +57,12 @@ router.get('/users/:id', (req, res, next) => {
             })
         }
         fetchedUser = user;
+        console.log(fetchedUser);
         const token = jwt.sign({fetchedUser: user.id}, 'this_is_my_secret_hash', {expiresIn: '4h'});
         res.status(200).json({
             message: 'authentication successful!',
             token: token
+            
         })
     })
     .catch(err => {
