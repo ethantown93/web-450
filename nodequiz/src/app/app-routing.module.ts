@@ -12,14 +12,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ErrorNotFoundComponent } from './components/error-not-found/error-not-found.component';
-import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
-import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
+import { HomeComponent } from './components/home/home.component';
+import { AuthGuard } from './auth.guard';
 
 const routes : Routes = [
   {
-    path:'',
-    redirectTo: '/login',
-    pathMatch: 'full'
+    path:'', component: HomeComponent
   },
   {
     path: 'login',
@@ -27,13 +25,21 @@ const routes : Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
+  {
+    path: '404', component: ErrorNotFoundComponent
+  },
+  {
+    path: "**", redirectTo: '/404'
+  }
 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: []
 })
 export class AppRoutingModule { }

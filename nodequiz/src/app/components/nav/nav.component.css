@@ -5,3 +5,11 @@
 ; Description: web-425
 ;===========================================
 */ 
+ul {
+    text-align: center;
+}
+
+li {
+    display: inline-block;
+    text-decoration: none;
+}

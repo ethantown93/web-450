@@ -10,24 +10,40 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { AuthData } from "./auth-data.model";
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+
   private loginUrl = 'http://localhost:3000/api/login'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router : Router) { }
 
 
-  login(id: string) {
-    const authData: AuthData = { id: id };
-    console.log(id);
-    this.http.post(this.loginUrl, authData).subscribe( res => {
-      console.log(res);
-    })
+
+  logout() {
+
+  }
+
+  login(user) {
+
+    return this.http.post<any>(this.loginUrl, user) 
+  }
+
+  loggedIn() {
+    return !!localStorage.getItem('token')
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
+  onLogout() {
+    localStorage.removeItem('token')
+    this.router.navigate(['/login'])
   }
 
 }

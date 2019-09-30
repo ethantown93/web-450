@@ -47,37 +47,22 @@ router.get('/users/:id', (req, res, next) => {
     })
   }); 
 
-  router.post('/login', (req, res, next) => {
-      let fetchedUser;
-    User.findOne({ id: req.body.id }).then(user => {
-        console.log(user);
-        if(!user) {
-            return res.status(401).json({
-                message: 'authentication failed. wow'
-            })
+  router.post('/login', (req, res) => {
+    let userData = req.body
+    User.findOne({id: userData.id}, (err, user) => {
+      if (err) {
+        console.log(err)    
+      } else {
+        if (!user) {
+          res.status(401).send('Invalid ID')
+        } 
+        else {
+            let payload = { subject: user.id }
+            let token = jwt.sign(payload, 'tokenKey', {expiresIn: '4h'})
+          res.status(200).send({token})
         }
-        fetchedUser = user;
-        console.log(fetchedUser);
-        const token = jwt.sign({fetchedUser: user.id}, 'this_is_my_secret_hash', {expiresIn: '4h'});
-        res.status(200).json({
-            message: 'authentication successful!',
-            token: token
-            
-        })
+      }
     })
-    .catch(err => {
-        return res.status(401).json({
-            message: 'authentication failed. bigtime.'
-        })
-    })
-  })
-
-
-  router.get('/dashboard', (req, res) => {
-      let dashboard = [{
-          content: 'welcome'
-      }]
-      res.json(dashboard);
   })
 
 

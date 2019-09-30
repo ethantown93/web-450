@@ -20,7 +20,7 @@ import { BaseLayoutComponent } from './shared/base-layout/base-layout.component'
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
@@ -30,6 +30,9 @@ import { MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/materia
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './components/home/home.component';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
 
 
 @NgModule({
@@ -40,7 +43,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ErrorNotFoundComponent,
     BaseLayoutComponent,
     AuthLayoutComponent,
-    DashboardComponent
+    DashboardComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
