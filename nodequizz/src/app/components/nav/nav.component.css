@@ -1,0 +1,15 @@
+/*
+============================================
+; Author: Ethan Townsend
+; Date:   8/12/2019
+; Description: web-425
+;===========================================
+*/ 
+ul {
+    text-align: center;
+}
+
+li {
+    display: inline-block;
+    text-decoration: none;
+}

@@ -1,0 +1,38 @@
+<!-- /*
+============================================
+; Author: Ethan Townsend
+; Date:   8/12/2019
+; Description: web-425
+;===========================================
+*/ -->
+
+
+<mat-toolbar class='menu' role='header' color='primary'>
+    <mat-toolbar-row>
+      <div class='left' fxFlex='75%'>
+        <span class='logo'>
+            <!-- <mat-icon class='home_icon'>home</mat-icon> -->
+          NodeQuiz
+        </span>
+      </div>
+      <div class='right' fxFlex='25%'>
+        <ul>
+          <li>
+            <a mat-button routerLink='/' routerLinkActive='mat-accent'>Home</a>
+          </li>
+          <li *ngIf='!authService.loggedIn()'>
+            <a mat-button routerLink='/login' routerLinkActive='mat-accent'>Login</a>
+          </li>
+          <li *ngIf='authService.loggedIn()'>
+            <a mat-button routerLink='#' routerLinkActive='mat-accent'>About</a>
+          </li>
+          <li *ngIf='authService.loggedIn()'>
+            <a mat-button routerLink='#' routerLinkActive='mat-accent'>Contact</a>
+          </li>
+          <li *ngIf='authService.loggedIn()'>
+            <a mat-button (click)='authService.onLogout()'>Logout</a>
+          </li>
+        </ul>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>

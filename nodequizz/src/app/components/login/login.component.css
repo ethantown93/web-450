@@ -1,0 +1,30 @@
+/*
+============================================
+; Author: Ethan Townsend
+; Date:   8/12/2019
+; Description: web-425
+;===========================================
+*/
+
+h1, h3 {
+    margin: 20px;
+}
+
+mat-card {
+    width: 50%;
+    margin-top: 100px;
+    text-align: center;
+}
+
+.login-card {
+    box-shadow: 2px 2px 10px 10px rgb(158, 158, 158);
+}
+
+mat-form-field {
+    width: 90%;
+}
+
+button {
+    margin-top: 15px;
+    width: 15%;
+}
