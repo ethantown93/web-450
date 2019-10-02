@@ -33,6 +33,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
+import { ErrorInterceptor } from '../error-interceptor';
+import { MatDialogModule } from '@angular/material';
+import { ErrorHandlerComponent } from './components/error-handler/error-handler.component';
 
 
 @NgModule({
@@ -44,7 +47,8 @@ import { AuthGuard } from './auth.guard';
     BaseLayoutComponent,
     AuthLayoutComponent,
     DashboardComponent,
-    HomeComponent
+    HomeComponent,
+    ErrorHandlerComponent
   ],
   imports: [
     BrowserModule,
@@ -61,8 +65,11 @@ import { AuthGuard } from './auth.guard';
     FlexLayoutModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatDialogModule
   ],
-  providers: [AuthService, AuthGuard],
-  bootstrap: [AppComponent]
+  providers: [AuthService, AuthGuard,
+  {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorHandlerComponent]
 })
 export class AppModule { }
