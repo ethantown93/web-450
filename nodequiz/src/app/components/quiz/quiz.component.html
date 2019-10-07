@@ -1,0 +1,28 @@
+<!-- /*
+============================================
+; Author: Ethan Townsend
+; Date:   8/12/2019
+; Description: web-425
+;===========================================
+*/ -->
+
+<div class='quiz-container'>
+
+    <h3 class='quiz-h3'>{{ quiz.quiz.quiz_name }}</h3>
+
+    <mat-card class='quiz-card' *ngFor='let questions of quiz.quiz.questions; let i = index'>
+        <h3>{{i + 1}}. {{ questions.question }}</h3>
+            <div *ngFor='let item of questions.question_answers; let lastItem = last;'>
+                <mat-radio-button>
+                    {{ item.answer_1 }}
+                    {{ item.answer_2 }}
+                    {{ item.answer_3 }}
+                    {{ item.answer_4 }}
+                    <span *ngIf='lastItem'></span>
+                </mat-radio-button>
+            </div>
+    </mat-card>
+</div>
+
+<a routerLink='/presentation/{{ quizId }}'><button mat-raised-button color='accent'><strong>Back to
+            Presentation</strong></button></a>

@@ -1,0 +1,22 @@
+/*
+============================================
+; Author: Ethan Townsend
+; Date:   8/12/2019
+; Description: web-425
+;===========================================
+*/
+
+.quiz-container {
+    margin: auto;
+    width: 60%;
+}
+
+.quiz-h3 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.quiz-card {
+    box-shadow: 2px 2px 3px 3px rgb(158, 158, 158);
+    margin: 20px 20px;
+}

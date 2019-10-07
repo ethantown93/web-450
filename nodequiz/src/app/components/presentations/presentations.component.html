@@ -1,0 +1,22 @@
+<!-- /*
+============================================
+; Author: Ethan Townsend
+; Date:   8/12/2019
+; Description: web-425
+;===========================================
+*/  -->
+
+<div class='carousel-container'>
+    <mat-card class='presentation-card'>
+        <mat-card-title *ngIf='quizzes'>{{ quizzes.title }}</mat-card-title>
+        <carousel class='carousel' [interval]="false">
+            <slide *ngFor="let slide of presentation; let index=index">
+            <img [src]="slide.name" alt="image slide" style="display: block; width: 100%;">
+            </slide>
+        </carousel>
+    </mat-card>
+<br/>
+<a routerLink ='/quiz/{{ presentationId }}'><button mat-raised-button color='accent' ><strong>Take the Quiz</strong></button></a>
+</div>
+
+
