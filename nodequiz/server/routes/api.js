@@ -13,6 +13,7 @@ const jwt = require('jsonwebtoken');
 
 const mongoose = require('mongoose');
 const User = require('../models/users');
+const Quiz = require('../models/quiz')
 
 const db = "mongodb+srv://admin:Kellogs123@cluster0-rfwnt.mongodb.net/employees?retryWrites=true&w=majority"
 
@@ -22,6 +23,7 @@ mongoose.connect(db).then(() => {
     console.log('connection failed.');
 })
 
+// apit posting new user to database
 router.post('/users', (req, res, next) => {
     let userData = req.body;
     const user = new User(userData);
@@ -31,6 +33,7 @@ router.post('/users', (req, res, next) => {
     })
   })
 
+  // api retrieving specific user ID
 router.get('/users/:id', (req, res, next) => {
     User.findOne({'id': req.params.id}, (err, users) => {
         if(err) {
@@ -47,7 +50,27 @@ router.get('/users/:id', (req, res, next) => {
     })
   }); 
 
-  router.post('/login', (req, res) => {
+
+// test api to get quiz with ID from database
+  router.get('/quiz/:id', (req, res, next) => {
+    Quiz.findOne({ 'quizId' : req.params.id}, (err, quiz) => {
+      console.log(quiz);
+        if(err) {
+            console.log(err);
+        } else 
+            if(!quiz) {
+                res.status(401).send('no quiz found.');
+        } else {
+            res.status(201).json({
+              quiz
+            })
+        }
+        console.log(quiz);
+    })
+  });
+  
+// login api
+  router.post('/login', (req, res, next) => {
     let userData = req.body
     User.findOne({id: userData.id}, (err, user) => {
       if (err) {
@@ -60,6 +83,21 @@ router.get('/users/:id', (req, res, next) => {
             let payload = { subject: user.id }
             let token = jwt.sign(payload, 'tokenKey', {expiresIn: '4h'})
           res.status(200).send({token})
+        }
+      }
+    })
+  })
+
+  router.get('/quiz', (req, res, next) => {
+    Quiz.find({'quizId': req.body.quizId}, (err, quiz) => {
+      if(err) {
+        console.log(err)
+      } else {
+        if(!quiz) {
+          console.log('no entries found')
+        } else {
+          console.log(quiz);
+          res.status(200).send(quiz)
         }
       }
     })

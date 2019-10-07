@@ -5,7 +5,38 @@
 ; Description: web-425
 ;===========================================
 */ 
-h1 {
-    margin: 20px;
-    text-align: center;
+
+mat-card {
+    width: 75%;
+    margin: auto;
+    margin-top: 100px;
 }
+
+.dashboard-card {
+     box-shadow: 2px 2px 10px 10px rgb(158, 158, 158);
+}
+
+.title {
+    font-size: 18px;
+}
+
+h1, p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.dashboard {
+    margin-top: 30px;
+}
+
+mat-expansion-panel {
+    width: 70%;
+    margin: auto;
+    background-color: rgba(207, 207, 207, 0.616);
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+

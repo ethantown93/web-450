@@ -26,7 +26,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/material';
+import { MatIconModule, MatMenuModule, MatToolbarModule, MatRadioModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -34,9 +34,11 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { ErrorInterceptor } from '../error-interceptor';
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule, MatExpansionModule } from '@angular/material';
 import { ErrorHandlerComponent } from './components/error-handler/error-handler.component';
-
+import { PresentationsComponent } from './components/presentations/presentations.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { QuizComponent } from './components/quiz/quiz.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { ErrorHandlerComponent } from './components/error-handler/error-handler.
     AuthLayoutComponent,
     DashboardComponent,
     HomeComponent,
-    ErrorHandlerComponent
+    ErrorHandlerComponent,
+    PresentationsComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +69,10 @@ import { ErrorHandlerComponent } from './components/error-handler/error-handler.
     FlexLayoutModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule,
+    CarouselModule,
+    MatRadioModule
   ],
   providers: [AuthService, AuthGuard,
   {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],

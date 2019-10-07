@@ -20,12 +20,18 @@ export class AuthService {
 
 
   private loginUrl = 'http://localhost:3000/api/login'
+  private quizUrl = 'http://localhost:3000/api/quiz/'
 
   constructor(private http: HttpClient, private router : Router) { }
 
   login(user) {
 
     return this.http.post<any>(this.loginUrl, user)
+  }
+
+  getQuiz(quizId) {
+    console.log(quizId);
+    return this.http.get<any>(this.quizUrl + quizId);
   }
 
   loggedIn() {

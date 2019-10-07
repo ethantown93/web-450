@@ -17,20 +17,20 @@
       </div>
       <div class='right' fxFlex='25%'>
         <ul>
-          <li>
-            <a mat-button routerLink='/' routerLinkActive='mat-accent'>Home</a>
+          <li *ngIf="!authService.loggedIn()">
+            <a mat-button routerLink='/' routerLinkActive='mat-accent' [routerLinkActiveOptions]="{ exact: true }">Home</a>
           </li>
           <li *ngIf='!authService.loggedIn()'>
-            <a mat-button routerLink='/login' routerLinkActive='mat-accent'>Login</a>
+            <a mat-button routerLink='/login' routerLinkActive='mat-accent'>Login <mat-icon>account_box</mat-icon></a>
           </li>
           <li *ngIf='authService.loggedIn()'>
-            <a mat-button routerLink='#' routerLinkActive='mat-accent'>About</a>
+            <a mat-button routerLink='/dashboard' routerLinkActive='mat-accent'>Dashboard</a>
           </li>
           <li *ngIf='authService.loggedIn()'>
-            <a mat-button routerLink='#' routerLinkActive='mat-accent'>Contact</a>
+            <a mat-button routerLink='#' routerLinkActive='mat-accent'>Cumulative Scores</a>
           </li>
           <li *ngIf='authService.loggedIn()'>
-            <a mat-button (click)='authService.onLogout()'>Logout</a>
+            <a mat-button (click)='authService.onLogout()'>Logout <mat-icon>exit_to_app</mat-icon></a>
           </li>
         </ul>
       </div>

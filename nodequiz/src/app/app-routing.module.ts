@@ -14,6 +14,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ErrorNotFoundComponent } from './components/error-not-found/error-not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './auth.guard';
+import { PresentationsComponent } from './components/presentations/presentations.component';
+import { QuizComponent } from './components/quiz/quiz.component';
 
 const routes : Routes = [
   {
@@ -29,16 +31,23 @@ const routes : Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'presentation/:id', component: PresentationsComponent
+  },
+  {
+    path: 'quiz/:id', component: QuizComponent
+  },
+  {
     path: '404', component: ErrorNotFoundComponent
   },
   {
     path: "**", redirectTo: '/404'
-  }
+  },
+
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule],
   providers: []
 })
