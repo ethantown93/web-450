@@ -31,10 +31,12 @@ const routes : Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'presentation/:id', component: PresentationsComponent
+    path: 'presentation/:id', component: PresentationsComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path: 'quiz/:id', component: QuizComponent
+    path: 'quiz/:id', component: QuizComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '404', component: ErrorNotFoundComponent

@@ -11,12 +11,16 @@ const mongoose = require('mongoose');
 
 const answerSchema = mongoose.Schema({
     id: Number ,
-    answer: { type: String }
+    answer_1: { type: String },
+    answer_2: { type: String },
+    answer43: { type: String },
+    answer_1: { type: String },
 })
 
 const questionsSchema = mongoose.Schema({
     id: Number ,
     question: String ,
+    correct_answer: Number,
     question_answers: [answerSchema]
 })
 
