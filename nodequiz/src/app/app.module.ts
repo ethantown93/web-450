@@ -16,8 +16,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ErrorNotFoundComponent } from './components/error-not-found/error-not-found.component';
-import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
-import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
@@ -46,8 +44,6 @@ import { QuizComponent } from './components/quiz/quiz.component';
     LoginComponent,
     NavComponent,
     ErrorNotFoundComponent,
-    BaseLayoutComponent,
-    AuthLayoutComponent,
     DashboardComponent,
     HomeComponent,
     ErrorHandlerComponent,

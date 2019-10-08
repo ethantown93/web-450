@@ -22,14 +22,11 @@ export class QuizComponent implements OnInit {
   quizId: number;
   quiz: any;
 
-
-  public removeAnswer() {
-    console.log(this.quiz.quiz.questions.questions_answers)
-  }
-
   constructor(private activeRoute: ActivatedRoute, private auth: AuthService, private http: HttpClient) { 
 
     this.quizId = parseInt(this.activeRoute.snapshot.paramMap.get('id'))
+    this.getQuiz()
+
   }
 
   getQuiz() { 
@@ -43,9 +40,7 @@ export class QuizComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getQuiz()
-    console.log(this.quiz.quiz.questions.questions_answers + 'hello')
-
+    
   }
 
 }
