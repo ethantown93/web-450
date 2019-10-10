@@ -9,6 +9,7 @@
 .quiz-container {
     margin: auto;
     width: 60%;
+    white-space: normal;
 }
 
 .quiz-h3 {

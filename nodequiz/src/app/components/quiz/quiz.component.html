@@ -10,22 +10,21 @@
 
     <h3 class='quiz-h3'>{{ quiz.quiz.quiz_name }}</h3>
 
-    <mat-card class='quiz-card' *ngFor='let questions of quiz.quiz.questions; let i = index'>
-        <h3>{{i + 1}}. {{ questions.question }}</h3>
-            <div *ngFor='let item of questions.question_answers; let lastItem = last;'>
-                <mat-radio-button>
-                    {{ item.answer_1 }}
-                    {{ item.answer_2 }}
-                    {{ item.answer_3 }}
-                    {{ item.answer_4 }}
-                    <span *ngIf='lastItem'></span>
-                </mat-radio-button>
-            </div>
-    </mat-card>
-    <div class='btn-container'>
-        <a routerLink='/presentation/{{ quizId }}' fxLayoutAlign="center"><button mat-raised-button color='accent'><strong>Back to
-            Presentation</strong></button></a>
-        <button class='submit-btn' mat-raised-button color='primary'>Submit</button>
-    </div>
+    <form #form='ngForm' (submit)='quizForm(form.value); form.reset()'>
+        <mat-card class='quiz-card' *ngFor='let questions of quiz.quiz.questions; let i = index'>
+            <h3>{{i + 1}}. {{ questions.question }}</h3>
+                <div *ngFor='let item of questions.question_answers'>
+
+                        <input [(ngModel)]='q[questions.id]' [checked]='q[questions.id]' value='{{item.id}}' name='question.id' type='radio'>
+                            {{ item.answer }}
+
+                </div>
+        </mat-card>
+        <div class='btn-container'>
+            <a routerLink='/presentation/{{ quizId }}' fxLayoutAlign="center"><button mat-raised-button color='accent'><strong>Back to
+                Presentation</strong></button></a>
+            <button type='submit' class='submit-btn' mat-raised-button color='primary'>Submit</button>
+        </div>
+    </form>
 </div>
 

@@ -82,22 +82,22 @@ router.get('/users/:id', (req, res, next) => {
         else {
             let payload = { subject: user.id }
             let token = jwt.sign(payload, 'tokenKey', {expiresIn: '4h'})
-          res.status(200).send({token})
+          res.status(200).send({token,payload})
         }
       }
     })
   })
 
   router.get('/quiz', (req, res, next) => {
-    Quiz.find({'quizId': req.body.quizId}, (err, quiz) => {
+    Quiz.find({'quizId': req.body.quizId}, (err, res) => {
       if(err) {
         console.log(err)
       } else {
-        if(!quiz) {
+        if(!res) {
           console.log('no entries found')
         } else {
-          console.log(quiz);
-          res.status(200).send(quiz)
+          console.log(res);
+          res.status(200).send(res)
         }
       }
     })

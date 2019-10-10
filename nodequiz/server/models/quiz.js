@@ -11,10 +11,7 @@ const mongoose = require('mongoose');
 
 const answerSchema = mongoose.Schema({
     id: Number ,
-    answer_1: { type: String },
-    answer_2: { type: String },
-    answer43: { type: String },
-    answer_1: { type: String },
+    answer: { type: String }
 })
 
 const questionsSchema = mongoose.Schema({
