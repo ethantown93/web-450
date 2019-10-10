@@ -8,16 +8,19 @@
 
 <div class='quiz-container' *ngIf='quiz'>
 
-    <h3 class='quiz-h3'>{{ quiz.quiz.quiz_name }}</h3>
+    <h3 class='quiz-h3'>{{ quiz.quiz.quiz_name }} </h3>
+
+    <div *ngFor='let this of quizQuestions'>
+        <p >{{this.id}}</p>
+    </div>
 
     <form #form='ngForm' (submit)='quizForm(form.value); form.reset()'>
         <mat-card class='quiz-card' *ngFor='let questions of quiz.quiz.questions; let i = index'>
-            <h3>{{i + 1}}. {{ questions.question }}</h3>
+            <h3>{{i + 1}}. {{ questions.question }} </h3>
                 <div *ngFor='let item of questions.question_answers'>
 
-                        <input [(ngModel)]='q[questions.id]' [checked]='q[questions.id]' value='{{item.id}}' name='question.id' type='radio'>
+                        <input [(ngModel)]='q[questions.id]' [(ngModel)]='a[questions.name]' [checked]='q[questions.id]' value='{{item.id}};{{questions.correct_answer}}' name='{{ questions.id }}' type='radio'/>
                             {{ item.answer }}
-
                 </div>
         </mat-card>
         <div class='btn-container'>

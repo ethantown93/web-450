@@ -30,7 +30,6 @@ export class AuthService {
   }
 
   getQuiz(quizId) {
-    console.log(quizId);
     return this.http.get<any>(this.quizUrl + quizId);
   }
 
