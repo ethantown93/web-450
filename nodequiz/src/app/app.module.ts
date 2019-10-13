@@ -37,6 +37,8 @@ import { ErrorHandlerComponent } from './components/error-handler/error-handler.
 import { PresentationsComponent } from './components/presentations/presentations.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { QuizComponent } from './components/quiz/quiz.component';
+import { SummaryComponent } from './components/summary/summary.component';
+import { CumulativeSummaryComponent } from './components/cumulative-summary/cumulative-summary.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { QuizComponent } from './components/quiz/quiz.component';
     HomeComponent,
     ErrorHandlerComponent,
     PresentationsComponent,
-    QuizComponent
+    QuizComponent,
+    SummaryComponent,
+    CumulativeSummaryComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +77,6 @@ import { QuizComponent } from './components/quiz/quiz.component';
   providers: [AuthService, AuthGuard,
   {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent],
-  entryComponents: [ErrorHandlerComponent]
+  entryComponents: [ErrorHandlerComponent, SummaryComponent]
 })
 export class AppModule { }

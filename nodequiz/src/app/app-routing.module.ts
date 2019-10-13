@@ -16,6 +16,8 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './auth.guard';
 import { PresentationsComponent } from './components/presentations/presentations.component';
 import { QuizComponent } from './components/quiz/quiz.component';
+import { SummaryComponent } from './components/summary/summary.component';
+import { CumulativeSummaryComponent } from './components/cumulative-summary/cumulative-summary.component';
 
 const routes : Routes = [
   {
@@ -32,6 +34,14 @@ const routes : Routes = [
   },
   {
     path: 'presentation/:id', component: PresentationsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'summary/:id/:score', component: SummaryComponent, 
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'cumulative-summary', component: CumulativeSummaryComponent, 
     canActivate: [AuthGuard]
   },
   {

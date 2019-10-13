@@ -18,8 +18,12 @@
 }
 
 .quiz-card {
+    box-shadow: 2px 2px 10px 10px rgb(158, 158, 158);
+    margin: 30px;
+}
+
+.quiz-card:hover {
     box-shadow: 2px 2px 6px 6px rgba(33, 116, 224, 0.541);
-    margin: 25px;
 }
 
 .btn-container {

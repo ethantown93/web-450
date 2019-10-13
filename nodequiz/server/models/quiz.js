@@ -11,13 +11,13 @@ const mongoose = require('mongoose');
 
 const answerSchema = mongoose.Schema({
     id: Number ,
+    isCorrect: Boolean,
     answer: { type: String }
 })
 
 const questionsSchema = mongoose.Schema({
     id: Number ,
     question: String ,
-    correct_answer: Number,
     question_answers: [answerSchema]
 })
 

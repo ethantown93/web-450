@@ -27,7 +27,7 @@
             <a mat-button routerLink='/dashboard' routerLinkActive='mat-accent'>Dashboard</a>
           </li>
           <li *ngIf='authService.loggedIn()'>
-            <a mat-button routerLink='#' routerLinkActive='mat-accent'>Cumulative Scores</a>
+            <a mat-button routerLink='/cumulative-summary' routerLinkActive='mat-accent'>Cumulative Scores</a>
           </li>
           <li *ngIf='authService.loggedIn()'>
             <a mat-button (click)='authService.onLogout()'>Logout <mat-icon>exit_to_app</mat-icon></a>
